@@ -13,13 +13,6 @@ const ArticlePage = () => {
     const { canUpvote } = articleInfo;
 
     const { user, isLoading } = useUser();
-
-    const [count, setCount] = useState(0);
-    useEffect(() => {
-        console.log('effect ', count);
-
-        return () => { console.log('cleanup', count)}
-    },[count])
     
     useEffect(() => {
         const loadArticle = async () => {
@@ -52,7 +45,6 @@ const ArticlePage = () => {
     return (
         <>
         <h1>{article.name}</h1>
-        <button onClick={() => setCount(count+1)} ></button>
         <div className='upvotes-section'>
             {user 
                 ? <button onClick={addVote}>{canUpvote ? 'Upvote' : 'Already Upvoted'}</button>
